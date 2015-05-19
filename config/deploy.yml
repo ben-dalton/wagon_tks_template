@@ -1,0 +1,12 @@
+# development:
+#   host: example.locomotive.dev
+#   api_key: ed9305eb7ca9115b749bb9124218a7fd99a0d654
+# staging:
+#   host: www.example.com
+#   api_key: 6d903d4b32ac0abcd798808244c74636674aa0b8
+#   ssl: true
+# production:
+#   host: www.example.com
+#   email: john@doe.net
+#   password: apassword
+#   # api_key: <your api key here>

@@ -1,0 +1,6 @@
+cms:
+  build: .
+  volumes_from:
+    - wagon_sipcamp_gems
+  ports:
+    - "3333:3333"

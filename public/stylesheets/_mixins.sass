@@ -1,0 +1,153 @@
+// From Darker to Lighter
+$green-1: #008652
+$green-2: #4ba94d
+$green-3: #70bd46
+$green-4: #9fce67
+
+
+@mixin text-shadow ($string: 0 1px 3px rgba(0, 0, 0, 0.25))
+  text-shadow: $string
+
+@mixin box-shadow ($string)
+  -webkit-box-shadow: $string
+  -moz-box-shadow:    $string
+  box-shadow:         $string
+
+@mixin drop-shadow ($x: 0, $y: 1px, $blur: 2px, $spread: 0, $alpha: 0.25)
+  -webkit-box-shadow: $x $y $blur $spread rgba(0, 0, 0, $alpha)
+  -moz-box-shadow:  $x $y $blur $spread rgba(0, 0, 0, $alpha)
+  box-shadow:   $x $y $blur $spread rgba(0, 0, 0, $alpha)
+
+@mixin inner-shadow ($x: 0, $y: 1px, $blur: 2px, $spread: 0, $alpha: 0.25)
+  -webkit-box-shadow: inset $x $y $blur $spread rgba(0, 0, 0, $alpha)
+  -moz-box-shadow:    inset $x $y $blur $spread rgba(0, 0, 0, $alpha)
+  box-shadow:         inset $x $y $blur $spread rgba(0, 0, 0, $alpha)
+
+
+@mixin box-sizing ($type: border-box)
+  -webkit-box-sizing: $type
+  -moz-box-sizing:    $type
+  box-sizing:         $type
+
+
+@mixin border-radius ($radius: 5px)
+  -webkit-border-radius: $radius
+  -moz-border-radius:    $radius
+  border-radius:         $radius
+
+  -moz-background-clip:    padding
+  -webkit-background-clip: padding-box
+  background-clip:         padding-box
+
+@mixin border-radiuses ($topright: 0, $bottomright: 0, $bottomleft: 0, $topleft: 0)
+  -webkit-border-top-right-radius:    $topright
+  -webkit-border-bottom-right-radius: $bottomright
+  -webkit-border-bottom-left-radius:  $bottomleft
+  -webkit-border-top-left-radius:     $topleft
+
+  -moz-border-radius-topright:        $topright
+  -moz-border-radius-bottomright:     $bottomright
+  -moz-border-radius-bottomleft:      $bottomleft
+  -moz-border-radius-topleft:         $topleft
+
+  border-top-right-radius:            $topright
+  border-bottom-right-radius:         $bottomright
+  border-bottom-left-radius:          $bottomleft
+  border-top-left-radius:             $topleft
+
+  -moz-background-clip:    padding
+  -webkit-background-clip: padding-box
+  background-clip:         padding-box
+
+
+@mixin opacity ($opacity: 0.5)
+  -webkit-opacity:  $opacity
+  -moz-opacity:     $opacity
+  opacity:    $opacity
+
+
+@mixin gradient ($startColor: #eee, $endColor: white)
+  background-color: $startColor
+  background: -webkit-gradient(linear, left top, left bottom, from($startColor), to($endColor))
+  background: -webkit-linear-gradient(top, $startColor, $endColor)
+  background: -moz-linear-gradient(top, $startColor, $endColor)
+  background: -ms-linear-gradient(top, $startColor, $endColor)
+  background: -o-linear-gradient(top, $startColor, $endColor)
+
+@mixin horizontal-gradient ($startColor: #eee, $endColor: white)
+  background-color: $startColor
+  background-image: -webkit-gradient(linear, left top, right top, from($startColor), to($endColor))
+  background-image: -webkit-linear-gradient(left, $startColor, $endColor)
+  background-image: -moz-linear-gradient(left, $startColor, $endColor)
+  background-image: -ms-linear-gradient(left, $startColor, $endColor)
+  background-image: -o-linear-gradient(left, $startColor, $endColor)
+
+
+@mixin simple-transition($seconds)
+  -webkit-transition: all $seconds ease
+  -moz-transition: all $seconds ease
+  -ms-transition: all $seconds ease
+  -o-transition: all $seconds ease
+  transition: all $seconds ease
+
+
+
+@mixin no-select
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+
+  // No support for these yet, use at own risk
+  -o-user-select: none
+  user-select: none
+
+
+@mixin flex-container($wrap)
+  padding: 0
+  margin: 0
+  list-style: none
+  display: -webkit-box
+  display: -moz-box
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+  -webkit-flex-flow: row $wrap
+  justify-content: space-around
+  flex-wrap: $wrap
+
+
+@mixin breakpoint($point)
+  @if $point == lg
+    @media (min-width: 1200px)
+      @content
+  @else if $point == md
+    @media (min-width: 992px)
+      @content
+  @else if $point == sm
+    @media (min-width: 769px)
+      @content
+  @else if $point == xs
+    @media (max-width: 768px)
+      @content
+
+@mixin breakpoint-specific($min, $max)
+  @media (min-width: $min) and (max-width: $max)
+    @content
+
+@mixin sipcam-button
+  display: inline-block
+  border: 1px solid $green-2
+  padding: 3px 10px
+  margin-right: 6px
+  +border-radius(2px)
+  +no-select
+  color: $green-2
+  &:hover
+    background: $green-2
+    color: #fff
+    text-decoration: none
+
+.sipcam-button
+  +sipcam-button
+  .fa 
+    margin-right: 5px
